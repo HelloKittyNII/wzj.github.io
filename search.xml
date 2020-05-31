@@ -4,11 +4,36 @@
   
     
     <entry>
-      <title>系统设计（二）优秀的代码.md</title>
+      <title>浅谈分布式系统FailOver</title>
+      <link href="/2020/05/31/%E6%B5%85%E8%B0%88%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9FFailOver/"/>
+      <url>/2020/05/31/%E6%B5%85%E8%B0%88%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9FFailOver/</url>
+      
+        <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>根据百度百科的词条描述，失败转移（FailOver）是指一种备份操作模式，当系统的主要组件由于失效或预定关机时间的原因而无法工作时，这种模式的系统组件功能被转嫁到二级系统组件中。</p><p>简单来讲就是当分布式系统中的某个组件出现问题，能够立马切换到新的节点继续进行工作，而不会直接导致整个系统宕机。</p><a id="more"></a><p>#具体措施<br>在真实的环境中我们可以通过几个方面来未雨绸缪，防范系统可能出现的故障，降低系统风险</p><h2 id="存储层"><a href="#存储层" class="headerlink" title="存储层"></a>存储层</h2><p>不管系统存储使用的是关系型数据库（MySQL、Orcale）或非关系型数据库（Redis、MongoDB、Hbase），都可以采用备库的方式进行解决，当主库出现问题，可以立即切换到从库，保证业务的连续型。</p><h2 id="中间件层"><a href="#中间件层" class="headerlink" title="中间件层"></a>中间件层</h2><p>一般系统中使用的中间件，都是以集群的方式存在，当系统的一个节点出现问题，通过负载均衡可以立即切换节点，举几个例子：</p><ul><li>一般申请缓存tair，可以申请两个机房，防止某个机房出现问题</li><li>当zookeeper的master节点挂掉，系统可以重新选取主节点</li></ul><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>假设某应用的集群服务器是20台，当某台服务器出现问题（比如内存泄漏），会立即被踢出，保证整个集群服务的正确性。做的好的话，集群可以有自愈功能，当某台机器下线，会自动上线一台服务。</p><p>另一方面，某个应用的服务器不会部署到一个机房，会零散的分布在几个机房中，这样可以提高系统的容灾，降低风险。</p><h2 id="编码方面"><a href="#编码方面" class="headerlink" title="编码方面"></a>编码方面</h2><p>假设一个系统依赖了20个其他的应用，我们会对每一个业务场景进行分析，每一个应用是强依赖或者是弱依赖，对弱依赖的应用，我们要做好防护，设置好超时时间，并做好兜底策略，假设下游系统宕机，从代码层面会将业务功能进行转移。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分布式 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 系统设计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>系统设计（一）优秀的代码.md</title>
       <link href="/2020/05/31/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/"/>
       <url>/2020/05/31/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
       
-        <content type="html"><![CDATA[<blockquote><p>一个优秀的架构师必须是一个优秀的coder，首先代码代码整洁可读高，再者系统功能横向和纵向扩展性好、运行效率高。</p></blockquote><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一个应用系统新建之初，就必须有一个编码规范，指导团队相关同学日常开发，编码规范可以包含如下几部分，另外可以有bad case 和bad case样板间，指导团队同学开发。</p><ul><li>系统对外接口规范（出参、入参）</li><li>命名规范（函数、方法、类、枚举、常量）</li><li>系统分层规范，每一层的入参、出参规范，包命名规范</li><li>日志打印规范（非常重要），可以分为拦截器打印和手动打印</li><li>配置使用</li><li>运维规范（熔断配置、限流配置）</li><li>消息使用规范（kafka、msgbroker）</li><li>异常处理规范（异常范围、使用场景）</li><li>注释（变量、类、方法）</li><li>格式化规则</li><li>必须使用Java8</li></ul><h1 id="代码整洁之道"><a href="#代码整洁之道" class="headerlink" title="代码整洁之道"></a>代码整洁之道</h1><p>下面xmind下载地址<br><a href="https://github.com/HelloKittyNII/Knowledge-Library/tree/master/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">https://github.com/HelloKittyNII/Knowledge-Library/tree/master/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1</a></p><p><img src="/2020/05/31/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/1.png" alt="代码整洁之道"></p><h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p><img src="/2020/05/31/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/2.png" alt="设计模式"></p>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>一个优秀的架构师必须是一个优秀的coder，首先代码代码整洁可读高，再者系统功能横向和纵向扩展性好、运行效率高。</p></blockquote><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一个应用系统新建之初，就必须有一个编码规范，指导团队相关同学日常开发，编码规范可以包含如下几部分，另外可以有bad case 和bad case样板间，指导团队同学开发。</p><a id="more"></a><ul><li>系统对外接口规范（出参、入参）</li><li>命名规范（函数、方法、类、枚举、常量）</li><li>系统分层规范，每一层的入参、出参规范，包命名规范</li><li>日志打印规范（非常重要），可以分为拦截器打印和手动打印</li><li>配置使用</li><li>运维规范（熔断配置、限流配置）</li><li>消息使用规范（kafka、msgbroker）</li><li>异常处理规范（异常范围、使用场景）</li><li>注释（变量、类、方法）</li><li>格式化规则</li><li>必须使用Java8</li></ul><h1 id="代码整洁之道"><a href="#代码整洁之道" class="headerlink" title="代码整洁之道"></a>代码整洁之道</h1><p>下面xmind下载地址<br><a href="https://github.com/HelloKittyNII/Knowledge-Library/tree/master/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">https://github.com/HelloKittyNII/Knowledge-Library/tree/master/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1</a></p><p><img src="/2020/05/31/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/1.png" alt="代码整洁之道"></p><h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p><img src="/2020/05/31/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/2.png" alt="设计模式"></p>]]></content>
       
       
       <categories>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://niiblog.com/"/>
-  <updated>2020-05-31T09:05:12.677Z</updated>
+  <updated>2020-05-31T09:55:55.853Z</updated>
   <id>https://niiblog.com/</id>
   
   <author>
@@ -17,23 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>系统设计（二）优秀的代码.md</title>
-    <link href="https://niiblog.com/2020/05/31/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/"/>
-    <id>https://niiblog.com/2020/05/31/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/</id>
-    <published>2020-05-31T08:46:51.000Z</published>
-    <updated>2020-05-31T09:05:12.677Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>一个优秀的架构师必须是一个优秀的coder，首先代码代码整洁可读高，再者系统功能横向和纵向扩展性好、运行效率高。</p></blockquote><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一个应用系统新建之初，就必须有一个编码规范，指导团队相关同学日常开发，编码规范可以包含如下几部分，另外可以有bad case 和bad case样板间，指导团队同学开发。</p><ul><li>系统对外接口规范（出参、入参）</li><li>命名规范（函数、方法、类、枚举、常量）</li><li>系统分层规范，每一层的入参、出参规范，包命名规范</li><li>日志打印规范（非常重要），可以分为拦截器打印和手动打印</li><li>配置使用</li><li>运维规范（熔断配置、限流配置）</li><li>消息使用规范（kafka、msgbroker）</li><li>异常处理规范（异常范围、使用场景）</li><li>注释（变量、类、方法）</li><li>格式化规则</li><li>必须使用Java8</li></ul><h1 id="代码整洁之道"><a href="#代码整洁之道" class="headerlink" title="代码整洁之道"></a>代码整洁之道</h1><p>下面xmind下载地址<br><a href="https://github.com/HelloKittyNII/Knowledge-Library/tree/master/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">https://github.com/HelloKittyNII/Knowledge-Library/tree/master/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1</a></p><p><img src="/2020/05/31/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/1.png" alt="代码整洁之道"></p><h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p><img src="/2020/05/31/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/2.png" alt="设计模式"></p>]]></content>
+    <title>浅谈分布式系统FailOver</title>
+    <link href="https://niiblog.com/2020/05/31/%E6%B5%85%E8%B0%88%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9FFailOver/"/>
+    <id>https://niiblog.com/2020/05/31/%E6%B5%85%E8%B0%88%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9FFailOver/</id>
+    <published>2020-05-31T09:22:15.000Z</published>
+    <updated>2020-05-31T09:55:55.853Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;blockquote&gt;
+      &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;根据百度百科的词条描述，失败转移（FailOver）是指一种备份操作模式，当系统的主要组件由于失效或预定关机时间的原因而无法工作时，这种模式的系统组件功能被转嫁到二级系统组件中。&lt;/p&gt;
+&lt;p&gt;简单来讲就是当分布式系统中的某个组件出现问题，能够立马切换到新的节点继续进行工作，而不会直接导致整个系统宕机。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="分布式" scheme="https://niiblog.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    
+      <category term="系统设计" scheme="https://niiblog.com/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>系统设计（一）优秀的代码.md</title>
+    <link href="https://niiblog.com/2020/05/31/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/"/>
+    <id>https://niiblog.com/2020/05/31/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/</id>
+    <published>2020-05-31T08:46:51.000Z</published>
+    <updated>2020-05-31T09:56:25.974Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
 &lt;p&gt;一个优秀的架构师必须是一个优秀的coder，首先代码代码整洁可读高，再者系统功能横向和纵向扩展性好、运行效率高。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; titl
-      
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;一个应用系统新建之初，就必须有一个编码规范，指导团队相关同学日常开发，编码规范可以包含如下几部分，另外可以有bad case 和bad case样板间，指导团队同学开发。&lt;/p&gt;
     
     </summary>
     
