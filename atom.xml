@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>nii&#39;s blogs</title>
   
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://niiblog.com/"/>
   <updated>2020-05-24T13:56:00.417Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://niiblog.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>nii</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>系统设计（一）优秀的代码</title>
-    <link href="http://yoursite.com/2020/05/24/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/"/>
-    <id>http://yoursite.com/2020/05/24/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/</id>
+    <link href="https://niiblog.com/2020/05/24/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/"/>
+    <id>https://niiblog.com/2020/05/24/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E4%B8%80%EF%BC%89%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/</id>
     <published>2020-05-24T13:52:36.000Z</published>
     <updated>2020-05-24T13:56:00.417Z</updated>
     
@@ -36,15 +36,15 @@
     </summary>
     
     
-      <category term="架构设计" scheme="http://yoursite.com/categories/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+      <category term="架构设计" scheme="https://niiblog.com/categories/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2020/05/24/hello-world/"/>
-    <id>http://yoursite.com/2020/05/24/hello-world/</id>
+    <link href="https://niiblog.com/2020/05/24/hello-world/"/>
+    <id>https://niiblog.com/2020/05/24/hello-world/</id>
     <published>2020-05-24T13:41:40.801Z</published>
     <updated>2020-05-24T13:41:40.801Z</updated>
     
